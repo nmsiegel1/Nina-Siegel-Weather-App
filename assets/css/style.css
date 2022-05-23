@@ -35,3 +35,15 @@ header {
     font-size: 25px;
     background: #FA8BFF;
 }
+
+.fav-uvi {
+    background: rgb(126, 230, 126);
+}
+
+.moderate-uvi {
+    background: yellow;
+}
+
+.extreme-uvi {
+    background: red;
+}
