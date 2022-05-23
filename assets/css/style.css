@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "sora", sans-serif;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+    background: #fA8BFF;
+    background: linear-gradient(
+        248deg, #FA8BFF 0%, #2BD2FF 35%, #2BFF88 100%);
+}
+
+.form-input {
+    width: 100%;
+    margin: 5px 0 20px 0;
+    padding: 5px;
+}
+
+.card-header {
+    font-size: 25px;
+    background: #FA8BFF;
+}
