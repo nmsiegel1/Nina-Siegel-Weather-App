@@ -56,7 +56,8 @@ var getWeatherData = function (lat, lon, city) {
           var iconCode = data.current.weather[0].icon;
           var forecast = data.daily;
           console.log("temp", temp, "humidity", humidity, "uvi", uvi, "wind", wind, "icon", iconCode, "forecast", forecast);
-          displayForecast(city, temp, humidity, uvi, wind, iconCode, forecast);
+          displayForecast(city, temp, humidity, uvi, wind, iconCode);
+          fiveDayForecast(city, forecast, iconCode);
         });
       } else {
         alert("Error: Data Not Found");
@@ -67,10 +68,9 @@ var getWeatherData = function (lat, lon, city) {
     });
 };
 
-var displayForecast = function (city, temp, humidity, uvi, wind, iconCode, forecast) {
-  var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
-
-  weatherEl.innerHTML = "";
+var displayForecast = function (city, temp, humidity, uvi, wind, iconCode) {
+    var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+    weatherEl.innerHTML = "";
 
   var titleEl = document.createElement("div");
   titleEl.setAttribute("class", "card forecast col-12");
@@ -109,4 +109,48 @@ if (uvi <= 3) {
 }
 };
 
-var fiveDayForecast = document.createElement("div"); 
+
+var fiveDayForecast = function(city, forecast, iconCode) {
+    console.log("5 day", city, forecast, iconCode);
+
+    var fiveDayEL = document.createElement("div");
+    fiveDayEL.setAttribute("class", "col-12 mt-20")
+    fiveDayEL.innerHTML = "<h4 'class=forecast-header'> FiveDay Forecast: </h4>";
+    weatherEl.appendChild(fiveDayEL);
+
+    for (var i = 0; i < forecast.length - 3; i++) {
+        var fiveDayCards = document.createElement("div");
+        fiveDayCards.setAttribute("class", "card col-sm-12 col-lg-2 mb-2");
+        weatherEl.appendChild(fiveDayCards);
+
+        var eachDay = document.createElement("h4");
+        eachDay.setAttribute("class", "card-header");
+        var dailyMoment = moment().add([i], "d").format('L');
+        eachDay.textContent = dailyMoment;
+        fiveDayCards.append(eachDay);
+
+        var dailyForecast = document.createElement("div");
+        dailyForecast.setAttribute("class", "card-body");
+        fiveDayCards.appendChild(dailyForecast);
+
+        var forecastIcon = document.createElement("img");
+        var fiveDayIcon = forecast[i].weather[0].icon;
+        var iconUrl = "http://openweathermap.org/img/w/" + fiveDayIcon + ".png";
+        forecastIcon.setAttribute("class", "icon");
+        forecastIcon.setAttribute("src", iconUrl);
+        dailyForecast.append(forecastIcon);
+
+        var temperature = Math.floor((parseInt(forecast[i].temp.day) - 273.15) * (9/5) + 32);
+        var wind = forecast[i].wind_speed;
+        var humidity = forecast[i].humidity;
+        var fiveDayArray = ["Temp: " + temperature + "°F", "Wind: " + wind + "mph", "Humidity: " + humidity + "%"];
+        for (var j = 0; j < fiveDayArray.length; j++) {
+            var fiveDayData = document.createElement("p");
+            fiveDayData.setAttribute("class", "card-text");
+            fiveDayData.innerHTML = fiveDayArray[j];
+            dailyForecast.appendChild(fiveDayData);
+        }
+    };
+
+
+}
