@@ -16,7 +16,6 @@ var formSubmitHandler = function (event) {
     searchButtons(city);
     userInput.value = "";
   } else {
-    // alert("Please enter a city.");
     $('#myModal').modal('show')
   }
 };
