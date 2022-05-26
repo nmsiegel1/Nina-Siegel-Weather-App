@@ -16,7 +16,8 @@ var formSubmitHandler = function (event) {
     searchButtons(city);
     userInput.value = "";
   } else {
-    alert("Please enter a city.");
+    // alert("Please enter a city.");
+    $('#myModal').modal('show')
   }
 };
 userFormEl.addEventListener("submit", formSubmitHandler);
@@ -206,8 +207,6 @@ loadSearch();
 
 // click event that takes that data from the buttons and loads it into the cityData function
 $("body").on("click", ".click", function(){
-  console.log("click!");
   var buttonText = $(this).text();
-  console.log(buttonText);
   cityData(buttonText)
 });
