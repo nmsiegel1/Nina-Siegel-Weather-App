@@ -24,7 +24,7 @@ Additional
 * When you select one of those dynamically created buttons, it retrieves the weather data for the city listed on the button. 
 
 ## Website
-https://nmsiegel1.github.io/Nina-Siegel-Weather-App/
+https://nmsiegel1.github.io/Weather-App/
 
 ## Screenshots
 <img width="1396" alt="Screen Shot 2022-05-27 at 9 48 57 AM" src="https://user-images.githubusercontent.com/102773691/170712686-530c6b5b-1852-4fce-8a4d-6ff2d812b724.png">
