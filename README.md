@@ -1,4 +1,4 @@
-# Nina-Siegel-Weather-App
+# Weather-App
 
 ## Purpose 
 
